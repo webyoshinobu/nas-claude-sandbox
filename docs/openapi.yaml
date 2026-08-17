@@ -303,6 +303,50 @@ paths:
         '200':
           description: 注文詳細
 
+  /api/orders/{id}/payment-status:
+    get:
+      tags: [Orders]
+      summary: 決済状況の確認(バックエンド経由でStripeに直接問い合わせ)
+      description: >
+        フロントエンドからの申告は信用せず、バックエンドがStripe APIに直接問い合わせて
+        決済状況を検証する。PAIDであることが確認できた場合のみ、download_tokensを生成し
+        レスポンスに含める。Webhook(payment_intent.succeeded)による非同期更新と併用する
+        ことで、即時性と確実性の両方を担保する。
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: 決済状況とダウンロードリンク(確認できた場合のみ)
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    enum: [PENDING, PAID, FAILED, CANCELLED, REFUNDED]
+                  downloadLinks:
+                    type: array
+                    description: PAID確認時のみ返却される、購入済み写真ごとのダウンロードトークン
+                    items:
+                      type: object
+                      properties:
+                        orderItemId:
+                          type: integer
+                        token:
+                          type: string
+                        expiresAt:
+                          type: string
+                          format: date-time
+        '403':
+          description: 自分の注文ではない
+
   /api/orders/{id}/payment-intent:
     post:
       tags: [Orders]
