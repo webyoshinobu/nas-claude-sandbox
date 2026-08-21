@@ -24,3 +24,6 @@ target/
 *.class
 *.jar
 *.war
+
+# Cursor
+.cursor/
