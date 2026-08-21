@@ -1,0 +1,422 @@
+﻿# A5:ER FORMAT:21
+# A5:ER ENCODING:UTF8
+# A5:ER Mk-1 Copyright © 2007 m.matsubara
+# A5:SQL Mk-2 Version 2.21.2 Copyright © 1997 - 2026 m.matsubara
+#  https://a5m2.mmatsubara.com
+
+[Manager]
+ProjectName=
+Author=
+MaxEntityRowShow=1000
+ReadOnlyRecommend=0
+PageInfo="Main",2,"A3Landscape",$FFFFFF
+LogicalView=1
+DecodeDomain=0
+ViewFormat=0
+UseNondependenceDashLine=0
+FontName=Tahoma
+FontSize=6
+PaperSize=A4Landscape
+HeaderLeft=
+HeaderCenter=
+HeaderRight=
+FooterLeft=
+FooterCenter=
+FooterRight=
+ShowPageoutRelation=1
+DefaultPkName=%0:s_PKC
+DefaultPkIndexName=%0:s_PKI
+DefaultIndexName=%0:s_IX%1:d
+DefaultFkName=%0:s_FK%1:d
+SqlSeparator=0
+UpperCaseKeyword=0
+ShowTag=1
+ShowCommonAttributes=0
+ShowDisableAttributes=0
+BugFixEntityWidth=1
+
+[Entity]
+PName=cart_items
+LName=cart_items
+Comment=
+TableInnerOption=
+TableOption=
+Page=Main
+Left=1200
+Top=200
+Field="id","id","integer","NOT NULL",0,"","",$FFFFFFFF,""
+Field="cart_id","cart_id","integer","NOT NULL",,"","",$FFFFFFFF,""
+Field="photo_id","photo_id","integer","NOT NULL",,"","",$FFFFFFFF,""
+Field="created_at","created_at","timestamp(6) without time zone",,,"now()","",$FFFFFFFF,""
+Field="API/機能の識別子","created_by_source","character varying",,,"","",$FFFFFFFF,""
+Field="updated_at","updated_at","timestamp(6) without time zone",,,"now()","",$FFFFFFFF,""
+Field="API/機能の識別子","updated_by_source","character varying",,,"","",$FFFFFFFF,""
+IndexInfo="cart_items_cart_id_photo_id_idx",1,"cart_id,photo_id",""
+Index=cart_items_cart_id_photo_id_idx=1,cart_id,photo_id
+IndexInfo="cart_items_photo_id_idx",0,"photo_id",""
+Index=cart_items_photo_id_idx=0,photo_id
+EffectMode=None
+Color=$000000
+BkColor=$FFFFFF
+Position="Main",1200,200
+ZOrder=-1
+
+[Entity]
+PName=carts
+LName=carts
+Comment=
+TableInnerOption=
+TableOption=
+Page=Main
+Left=600
+Top=750
+Field="id","id","integer","NOT NULL",0,"","",$FFFFFFFF,""
+Field="user_id","user_id","integer","NOT NULL",,"","",$FFFFFFFF,""
+Field="created_at","created_at","timestamp(6) without time zone",,,"now()","",$FFFFFFFF,""
+Field="API/機能の識別子","created_by_source","character varying",,,"","",$FFFFFFFF,""
+Field="updated_at","updated_at","timestamp(6) without time zone",,,"now()","",$FFFFFFFF,""
+Field="API/機能の識別子","updated_by_source","character varying",,,"","",$FFFFFFFF,""
+IndexInfo="carts_user_id_key",2,"user_id",""
+Index=carts_user_id_key=2,user_id
+EffectMode=None
+Color=$000000
+BkColor=$FFFFFF
+Position="Main",600,750
+ZOrder=-2
+
+[Entity]
+PName=download_tokens
+LName=download_tokens
+Comment=
+TableInnerOption=
+TableOption=
+Page=Main
+Left=1700
+Top=200
+Field="id","id","integer","NOT NULL",0,"","",$FFFFFFFF,""
+Field="order_item_id","order_item_id","integer","NOT NULL",,"","",$FFFFFFFF,""
+Field="token","token","character varying","NOT NULL",,"","",$FFFFFFFF,""
+Field="expires_at","expires_at","timestamp(6) without time zone","NOT NULL",,"","",$FFFFFFFF,""
+Field="created_at","created_at","timestamp(6) without time zone",,,"now()","",$FFFFFFFF,""
+Field="API/機能の識別子","created_by_source","character varying",,,"","",$FFFFFFFF,""
+Field="updated_at","updated_at","timestamp(6) without time zone",,,"now()","",$FFFFFFFF,""
+Field="API/機能の識別子","updated_by_source","character varying",,,"","",$FFFFFFFF,""
+IndexInfo="download_tokens_order_item_id_idx",0,"order_item_id",""
+Index=download_tokens_order_item_id_idx=0,order_item_id
+IndexInfo="download_tokens_token_key",2,"token",""
+Index=download_tokens_token_key=2,token
+EffectMode=None
+Color=$000000
+BkColor=$FFFFFF
+Position="Main",1700,200
+ZOrder=-3
+
+[Entity]
+PName=flyway_schema_history
+LName=flyway_schema_history
+Comment=
+TableInnerOption=
+TableOption=
+Page=Main
+Left=100
+Top=1400
+Field="installed_rank","installed_rank","integer","NOT NULL",0,"","",$FFFFFFFF,""
+Field="version","version","character varying(50)",,,"","",$FFFFFFFF,""
+Field="description","description","character varying(200)","NOT NULL",,"","",$FFFFFFFF,""
+Field="type","type","character varying(20)","NOT NULL",,"","",$FFFFFFFF,""
+Field="script","script","character varying(1000)","NOT NULL",,"","",$FFFFFFFF,""
+Field="checksum","checksum","integer",,,"","",$FFFFFFFF,""
+Field="installed_by","installed_by","character varying(100)","NOT NULL",,"","",$FFFFFFFF,""
+Field="installed_on","installed_on","timestamp(6) without time zone","NOT NULL",,"now()","",$FFFFFFFF,""
+Field="execution_time","execution_time","integer","NOT NULL",,"","",$FFFFFFFF,""
+Field="success","success","boolean","NOT NULL",,"","",$FFFFFFFF,""
+IndexInfo="flyway_schema_history_s_idx",0,"success",""
+Index=flyway_schema_history_s_idx=0,success
+EffectMode=None
+Color=$000000
+BkColor=$FFFFFF
+Position="Main",100,1400
+ZOrder=-4
+
+[Entity]
+PName=order_items
+LName=order_items
+Comment=
+TableInnerOption=
+TableOption=
+Page=Main
+Left=1200
+Top=500
+Field="id","id","integer","NOT NULL",0,"","",$FFFFFFFF,""
+Field="order_id","order_id","integer","NOT NULL",,"","",$FFFFFFFF,""
+Field="photo_id","photo_id","integer","NOT NULL",,"","",$FFFFFFFF,""
+Field="最小通貨単位(例","price","integer","NOT NULL",,""," セント)で保存",$FFFFFFFF,""
+Field="created_at","created_at","timestamp(6) without time zone",,,"now()","",$FFFFFFFF,""
+Field="API/機能の識別子","created_by_source","character varying",,,"","",$FFFFFFFF,""
+Field="updated_at","updated_at","timestamp(6) without time zone",,,"now()","",$FFFFFFFF,""
+Field="API/機能の識別子","updated_by_source","character varying",,,"","",$FFFFFFFF,""
+IndexInfo="order_items_order_id_idx",0,"order_id",""
+Index=order_items_order_id_idx=0,order_id
+IndexInfo="order_items_photo_id_idx",0,"photo_id",""
+Index=order_items_photo_id_idx=0,photo_id
+EffectMode=None
+Color=$000000
+BkColor=$FFFFFF
+Position="Main",1200,500
+ZOrder=-5
+
+[Entity]
+PName=orders
+LName=orders
+Comment=
+TableInnerOption=
+TableOption=
+Page=Main
+Left=600
+Top=1100
+Field="id","id","integer","NOT NULL",0,"","",$FFFFFFFF,""
+Field="user_id","user_id","integer","NOT NULL",,"","",$FFFFFFFF,""
+Field="stripe_payment_intent_id","stripe_payment_intent_id","character varying",,,"","",$FFFFFFFF,""
+Field="PENDING, PAID, FAILED, CANCELLED, REFUNDED","status","character varying","NOT NULL",,"\qPENDING\q","",$FFFFFFFF,""
+Field="created_at","created_at","timestamp(6) without time zone",,,"now()","",$FFFFFFFF,""
+Field="API/機能の識別子","created_by_source","character varying",,,"","",$FFFFFFFF,""
+Field="updated_at","updated_at","timestamp(6) without time zone",,,"now()","",$FFFFFFFF,""
+Field="API/機能の識別子","updated_by_source","character varying",,,"","",$FFFFFFFF,""
+IndexInfo="orders_status_idx",0,"status",""
+Index=orders_status_idx=0,status
+IndexInfo="orders_stripe_payment_intent_id_key",2,"stripe_payment_intent_id",""
+Index=orders_stripe_payment_intent_id_key=2,stripe_payment_intent_id
+IndexInfo="orders_user_id_idx",0,"user_id",""
+Index=orders_user_id_idx=0,user_id
+EffectMode=None
+Color=$000000
+BkColor=$FFFFFF
+Position="Main",600,1100
+ZOrder=-6
+
+[Entity]
+PName=photos
+LName=photos
+Comment=
+TableInnerOption=
+TableOption=
+Page=Main
+Left=550
+Top=100
+Field="id","id","integer","NOT NULL",0,"","",$FFFFFFFF,""
+Field="seller_id","seller_id","integer","NOT NULL",,"","",$FFFFFFFF,""
+Field="title","title","character varying","NOT NULL",,"","",$FFFFFFFF,""
+Field="最小通貨単位(例","price","integer","NOT NULL",,""," セント)で保存",$FFFFFFFF,""
+Field="watermarked_image_url","watermarked_image_url","character varying",,,"","",$FFFFFFFF,""
+Field="original_image_url","original_image_url","character varying",,,"","",$FFFFFFFF,""
+Field="category","category","character varying",,,"","",$FFFFFFFF,""
+Field="is_deleted","is_deleted","boolean",,,"false","",$FFFFFFFF,""
+Field="created_at","created_at","timestamp(6) without time zone",,,"now()","",$FFFFFFFF,""
+Field="API/機能の識別子","created_by_source","character varying",,,"","",$FFFFFFFF,""
+Field="updated_at","updated_at","timestamp(6) without time zone",,,"now()","",$FFFFFFFF,""
+Field="API/機能の識別子","updated_by_source","character varying",,,"","",$FFFFFFFF,""
+IndexInfo="photos_category_idx",0,"category",""
+Index=photos_category_idx=0,category
+IndexInfo="photos_seller_id_idx",0,"seller_id",""
+Index=photos_seller_id_idx=0,seller_id
+IndexInfo="photos_title_idx",0,"title",""
+Index=photos_title_idx=0,title
+EffectMode=None
+Color=$000000
+BkColor=$FFFFFF
+Position="Main",550,100
+ZOrder=-7
+
+[Entity]
+PName=users
+LName=users
+Comment=
+TableInnerOption=
+TableOption=
+Page=Main
+Left=100
+Top=150
+Field="id","id","integer","NOT NULL",0,"","",$FFFFFFFF,""
+Field="email","email","character varying","NOT NULL",,"","",$FFFFFFFF,""
+Field="password_hash","password_hash","character varying","NOT NULL",,"","",$FFFFFFFF,""
+Field="GENERAL or SELLER","role","character varying","NOT NULL",,"","",$FFFFFFFF,""
+Field="is_active","is_active","boolean",,,"true","",$FFFFFFFF,""
+Field="created_at","created_at","timestamp(6) without time zone",,,"now()","",$FFFFFFFF,""
+Field="API/機能の識別子","created_by_source","character varying",,,"","",$FFFFFFFF,""
+Field="updated_at","updated_at","timestamp(6) without time zone",,,"now()","",$FFFFFFFF,""
+Field="API/機能の識別子","updated_by_source","character varying",,,"","",$FFFFFFFF,""
+IndexInfo="users_email_key",2,"email",""
+Index=users_email_key=2,email
+EffectMode=None
+Color=$000000
+BkColor=$FFFFFF
+Position="Main",100,150
+ZOrder=-8
+
+[Relation]
+Entity1=orders
+Entity2=order_items
+RelationType1=2
+RelationType2=3
+Fields1=id
+Fields2=order_id
+Cardinarity1=
+Cardinarity2=
+Position="MAIN",0,3200,9700,4184,R,R,""
+Dependence=0
+Caption=
+PName=
+LineMode=0
+Bar1=320
+Bar2=970
+Bar3=418
+TermPos1=R
+TermPos2=R
+ZOrder=-13
+
+[Relation]
+Entity1=photos
+Entity2=order_items
+RelationType1=2
+RelationType2=3
+Fields1=id
+Fields2=photo_id
+Cardinarity1=
+Cardinarity2=
+Position="MAIN",0,7800,9400,86,R,R,""
+Dependence=0
+Caption=
+PName=
+LineMode=0
+Bar1=780
+Bar2=940
+Bar3=9
+TermPos1=R
+TermPos2=R
+ZOrder=-14
+
+[Relation]
+Entity1=users
+Entity2=orders
+RelationType1=2
+RelationType2=3
+Fields1=id
+Fields2=user_id
+Cardinarity1=
+Cardinarity2=
+Position="MAIN",0,0,8252,7355,R,R,""
+Dependence=0
+Caption=
+PName=
+LineMode=0
+Bar1=0
+Bar2=825
+Bar3=736
+TermPos1=R
+TermPos2=R
+ZOrder=-15
+
+[Relation]
+Entity1=users
+Entity2=photos
+RelationType1=2
+RelationType2=3
+Fields1=id
+Fields2=seller_id
+Cardinarity1=
+Cardinarity2=
+Position="MAIN",0,9000,5400,7275,R,R,""
+Dependence=0
+Caption=
+PName=
+LineMode=0
+Bar1=900
+Bar2=540
+Bar3=728
+TermPos1=R
+TermPos2=R
+ZOrder=-16
+
+[Relation]
+Entity1=carts
+Entity2=cart_items
+RelationType1=2
+RelationType2=3
+Fields1=id
+Fields2=cart_id
+Cardinarity1=
+Cardinarity2=
+Position="MAIN",0,3200,2200,6311,R,R,""
+Dependence=0
+Caption=
+PName=
+LineMode=0
+Bar1=320
+Bar2=220
+Bar3=631
+TermPos1=R
+TermPos2=R
+ZOrder=-9
+
+[Relation]
+Entity1=photos
+Entity2=cart_items
+RelationType1=2
+RelationType2=3
+Fields1=id
+Fields2=photo_id
+Cardinarity1=
+Cardinarity2=
+Position="MAIN",0,4000,8200,2358,R,R,""
+Dependence=0
+Caption=
+PName=
+LineMode=0
+Bar1=400
+Bar2=820
+Bar3=236
+TermPos1=R
+TermPos2=R
+ZOrder=-10
+
+[Relation]
+Entity1=users
+Entity2=carts
+RelationType1=2
+RelationType2=3
+Fields1=id
+Fields2=user_id
+Cardinarity1=
+Cardinarity2=
+Position="MAIN",0,1400,3210,6365,R,R,""
+Dependence=0
+Caption=
+PName=
+LineMode=0
+Bar1=140
+Bar2=321
+Bar3=636
+TermPos1=R
+TermPos2=R
+ZOrder=-11
+
+[Relation]
+Entity1=order_items
+Entity2=download_tokens
+RelationType1=2
+RelationType2=3
+Fields1=id
+Fields2=order_item_id
+Cardinarity1=
+Cardinarity2=
+Position="MAIN",0,600,4100,6407,R,R,""
+Dependence=0
+Caption=
+PName=
+LineMode=0
+Bar1=60
+Bar2=410
+Bar3=641
+TermPos1=R
+TermPos2=R
+ZOrder=-12

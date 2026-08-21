@@ -2,7 +2,7 @@ spring:
   application:
     name: backend
   datasource:
-    url: jdbc:postgresql://localhost:5432/photo_ec_db
+    url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5432/photo_ec_db}
     username: ${DB_USERNAME}
     password: ${DB_PASSWORD}
   jpa:

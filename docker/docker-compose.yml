@@ -1,6 +1,7 @@
 services:
   postgres:
     image: postgres:16
+    container_name: photoec_postgres
     environment:
       POSTGRES_DB: photo_ec_db
       POSTGRES_USER: ${DB_USERNAME}
@@ -9,18 +10,28 @@ services:
       - "5432:5432"
     volumes:
       - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${DB_USERNAME} -d photo_ec_db"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
 
   backend:
     build: ../backend
+    container_name: photoec_backend
     ports:
       - "8080:8080"
     depends_on:
-      - postgres
+      postgres:
+        condition: service_healthy
     environment:
       SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/photo_ec_db
+      DB_USERNAME: ${DB_USERNAME}
+      DB_PASSWORD: ${DB_PASSWORD}
 
   frontend:
     build: ../frontend
+    container_name: photoec_frontend
     ports:
       - "5173:5173"
 
